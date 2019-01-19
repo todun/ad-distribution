@@ -1,1 +1,11 @@
-<h1>Homepage</h1>
+{% if ad_all %}
+</br>
+<ul>
+    {% for ad in ad_all %}
+    <li><a href="#"> {{ ad.title }} </a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <h3>You do not have any ads</h3>
+
+{% endif %}

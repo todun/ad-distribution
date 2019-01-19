@@ -6,6 +6,7 @@ from .models import Ad
 
 class IndexView(generic.ListView):
     template_name = "adIndex/index.html"
+    context_object_name = "ad_all"
 
     def get_queryset(self):
         return Ad.objects.all()
