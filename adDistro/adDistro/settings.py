@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'adIndex.apps.AdindexConfig',
     'django.contrib.admin',
     'django.contrib.auth',
