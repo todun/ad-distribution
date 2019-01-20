@@ -10,6 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Avatar from '@material-ui/core/Avatar';
 import FullStackDeveloper from "../assets/FullStackDeveloper.png";
 import Typography from '@material-ui/core/Typography';
+import AdRows from './AdRows';
 
 const styles = theme => ({
   root: {
@@ -36,9 +37,12 @@ const styles = theme => ({
 });
 
 class AdPanels extends React.Component {
-  state = {
-    checked: [0],
-  };
+    constructor(props) {
+        super(props)
+        this.state = {
+        checked: [0],
+    }
+    }   
 
   handleToggle = value => () => {
     const { checked } = this.state;
@@ -53,8 +57,16 @@ class AdPanels extends React.Component {
 
     this.setState({
       checked: newChecked,
+      openModalId: ""
     });
   };
+
+  handleOnClick = (e, oof) => {
+      console.log(e, oof);
+    //   this.setState({
+    //       openModalId: 
+    //   });
+  }
 
   render() {
     const { classes } = this.props;
@@ -62,45 +74,9 @@ class AdPanels extends React.Component {
     return (
       <List dense className={classes.root}>
         {[0, 1, 2, 3].map(value => (
-          <ListItem key={value} button className={classes.listitem}>
-            <ListItemAvatar>
-              <Avatar
-                className={classes.avatar}
-                alt={`Avatar n°${value + 1}`}
-                src={FullStackDeveloper}
-              />
-            </ListItemAvatar>
-            <ListItemText primary={`Ivan ${value + 1}`} className={classes.title}
-                secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.smalltitle} color="textPrimary">
-                    Description
-                  </Typography>
-                  </React.Fragment>}
-            />
-            <ListItemText primary={`${value + 1} Dollars`} className={classes.mediumtitle}
-                secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.mediumtitle} color="textPrimary">
-                    Chinatown
-                  </Typography>
-                  </React.Fragment>}
-            />
-            <ListItemText primary={`${value + 1} hour(s) ago`} className={classes.mediumtitle}
-                secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.mediumtitle} color="textPrimary">
-                    gg easy
-                  </Typography>
-                  </React.Fragment>}
-            />                      
-            <ListItemSecondaryAction>
-              <Checkbox
-                onChange={this.handleToggle(value)}
-                checked={this.state.checked.indexOf(value) !== -1}
-              />
-            </ListItemSecondaryAction>
-          </ListItem>
+            console.log("hello")
+            <AdRows
+                key={value}/>
         ))}
       </List>
     );
