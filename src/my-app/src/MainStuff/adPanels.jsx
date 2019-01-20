@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import FullStackDeveloper from "../assets/FullStackDeveloper.png";
 import Typography from '@material-ui/core/Typography';
 import AdRows from './AdRows';
+import AdModal from "./AdModal";
 
 const styles = theme => ({
   root: {
@@ -40,8 +41,10 @@ class AdPanels extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-        checked: [0],
-    }
+          checked: [0],
+          currentRow: null,
+          shouldOpenModal: false 
+      }
     }   
 
   handleToggle = value => () => {
@@ -68,17 +71,29 @@ class AdPanels extends React.Component {
     //   });
   }
 
+  getCurrentRow = (index) => {
+    this.setState({
+      currentIndex: index,
+      shouldOpenModal: true
+    });
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
-      <List dense className={classes.root}>
-        {[0, 1, 2, 3].map(value => (
-            console.log("hello")
-            <AdRows
-                key={value}/>
-        ))}
-      </List>
+      <div>
+        <List dense className={classes.root}>
+          {[0, 1, 2, 3].map(value => (
+              <AdRows
+                  key={value}
+                  id={value}
+                  getCurrentRow={this.getCurrentRow}
+                  />
+          ))}
+        </List>
+        {this.state.shouldOpenModal && <AdModal></AdModal>}
+      </div>
     );
   }
 }

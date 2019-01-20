@@ -44,21 +44,43 @@ class AdRows extends React.Component {
         } 
       }
 
+      handleToggle = value => () => {
+        const { checked } = this.state;
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+    
+        if (currentIndex === -1) {
+          newChecked.push(value);
+        } else {
+          newChecked.splice(currentIndex, 1);
+        }
+    
+        this.setState({
+          checked: newChecked,
+          openModalId: ""
+        });
+      };
+
+      handleOnClick = () => {
+        console.log(this.props.id)
+        this.props.getCurrentRow(this.props.id);
+      }
+
     render() {
         const { classes } = this.props;
 
         return (
-            <ListItem key={this.props.key} button className={classes.listitem}>
+            <ListItem key={this.props.id} button className={classes.listitem}>
             <ListItemAvatar>
               <Avatar
                 className={classes.avatar}
-                alt={`Avatar n°${this.props.key + 1}`}
+                alt={`Avatar n°${this.props.id + 1}`}
                 src={FullStackDeveloper}
                 onClick = {this.handleOnClick}
-                id={this.props.key}
+                id={this.props.id}
               />
             </ListItemAvatar>
-            <ListItemText primary={`Ivan ${this.props.key + 1}`} className={classes.title}
+            <ListItemText primary={`Ivan ${this.props.id + 1}`} className={classes.title}
                 secondary={
                 <React.Fragment>
                   <Typography component="span" className={classes.smalltitle} color="textPrimary">
@@ -66,7 +88,7 @@ class AdRows extends React.Component {
                   </Typography>
                   </React.Fragment>}
             />
-            <ListItemText primary={`${this.props.key + 1} Dollars`} className={classes.mediumtitle}
+            <ListItemText primary={`${this.props.id + 1} Dollars`} className={classes.mediumtitle}
                 secondary={
                 <React.Fragment>
                   <Typography component="span" className={classes.mediumtitle} color="textPrimary">
@@ -74,7 +96,7 @@ class AdRows extends React.Component {
                   </Typography>
                   </React.Fragment>}
             />
-            <ListItemText primary={`${this.props.key + 1} hour(s) ago`} className={classes.mediumtitle}
+            <ListItemText primary={`${this.props.id + 1} hour(s) ago`} className={classes.mediumtitle}
                 secondary={
                 <React.Fragment>
                   <Typography component="span" className={classes.mediumtitle} color="textPrimary">
@@ -84,8 +106,8 @@ class AdRows extends React.Component {
             />                      
             <ListItemSecondaryAction>
               <Checkbox
-                // onChange={this.handleToggle(this.props.key)}
-                checked={this.state.checked.indexOf(this.props.keye) !== -1}
+                onChange={this.handleToggle(this.props.id)}
+                checked={this.state.checked.indexOf(this.props.id) !== -1}
               />
             </ListItemSecondaryAction>
           </ListItem>
