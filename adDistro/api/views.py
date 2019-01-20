@@ -2,9 +2,10 @@ from rest_framework import viewsets
 from . import serializers
 from rest_framework.response import Response 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from . import serializers
 from adIndex.models import Ad, EbayUser, AdDistroUser
+from django.http import HttpResponse
 
 class UserViewset(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()

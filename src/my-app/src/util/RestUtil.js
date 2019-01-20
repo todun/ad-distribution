@@ -19,11 +19,20 @@ export default class RestUtil {
 	 * @return {Promise} - a promise that resolves when the request is complete with the response as it's parameter
 	 */
 	static sendPostRequest(endpoint, body, optionOverrides = {}) {
+		//console.log(endpoint)
+		let transformedEndPoint = ''
+		if(endpoint === 'api-token-auth'){
+			transformedEndPoint = "adIndex/"+endpoint
+		}
+		else{
+			transformedEndPoint = makeRequestURL(endpoint)
+		}
 		const options = Object.assign({
-			uri: makeRequestURL(endpoint),
+			uri: transformedEndPoint,
 			headers: {
 				"Content-Type": "application/json"
 			},
+			// formData: body,
 			json: true,
 			method: "POST",
 			body: body

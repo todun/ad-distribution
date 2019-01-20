@@ -1,11 +1,7 @@
 import React, { Component } 
 from 'react';
 import {FormControl, FormGroup, Form, Button, ControlLabel} from "react-bootstrap";
-<<<<<<< HEAD
-// import RestUtil from "./util/RestUtil";
-=======
 import RestUtil from "../util/RestUtil";
->>>>>>> c88fc6007bd84edd1364f4960d9dd923844bad7e
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -18,8 +14,18 @@ class LoginComponent extends Component {
     }
 
     sendLoginRequest = () => {
-        const endPoint = "user/2"
-        RestUtil.sendGetRequest(endPoint);
+        // console.log(this.state.userNameField)
+        let endpoint = "api-token-auth"
+        let payload = {
+            username: this.state.userNameField,
+            password: this.state.passwordField
+        }
+        RestUtil.sendPostRequest(endpoint, payload);
+    }
+
+    sendLogoutRequest = () => {
+        let endpoint = "logout"
+        RestUtil.sendPostRequest(endpoint)
     }
 
     getValidationState = () => {
@@ -34,12 +40,17 @@ class LoginComponent extends Component {
         return null;
     }
 
-    handleChange = (e) => {
+    handleChangeUser = (e) => {
         this.setState({ 
             userNameField: e.target.value
         });
       }
 
+      handleChangePass = (e) => {
+        this.setState({ 
+            passwordField: e.target.value
+        });
+      }
     handleSubmit = event => {
         event.preventDefault();
      }
@@ -55,9 +66,10 @@ class LoginComponent extends Component {
                         <br></br>
                         <FormControl
                             type="username"
+                            name = "username"
                             value={this.state.userNameField}
                             placeholder="username"
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeUser}
                         />
                     <FormControl.Feedback />
                     </FormGroup>
@@ -69,9 +81,10 @@ class LoginComponent extends Component {
                         <br></br>
                         <FormControl
                             type="password"
-                            value={this.state.password}
+                            name = "password"
+                            value={this.state.passwordField}
                             placeholder="Enter your moms password"
-                            onChange={this.handleChange}
+                            onChange={this.handleChangePass}
                         />
                     <FormControl.Feedback />
                     </FormGroup>
@@ -81,6 +94,12 @@ class LoginComponent extends Component {
                     bsStyle="primary"
                     type="submit">
                     Log me in daddy
+                </Button>
+                <Button 
+                    onClick={this.sendLogoutRequest}
+                    bsStyle="danger"
+                    type="submit">
+                    Log out
                 </Button>
             </div>
         )
