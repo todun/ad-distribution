@@ -13,8 +13,10 @@ class Ad(models.Model):
     is_active = models.BooleanField(default = True)
     postTo = models.CharField(max_length = 250, default = "")
     objects = models.Manager()
-    
+
     def __str__(self):
         return self.title
 
-    
+class User(models.Model):
+    userID = models.IntegerField()
+    username = models.CharField

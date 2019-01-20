@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from .models import Ad
+from django.contrib.auth import authenticate, login
+from django.views.generic import View
 # Create your views here.
 
 class IndexView(generic.ListView):
