@@ -1,8 +1,8 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

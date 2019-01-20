@@ -3,12 +3,13 @@ import LoginComponent from "./LoginStuff/loginComponent"
 // import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './MainStuff/navigationBar';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <header className="NavigationBar">
+         <header className="NavigationBar">
             <NavigationBar/>
           </header>
 
@@ -16,8 +17,8 @@ class App extends Component {
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <h1>
                 Ad Distro
-            </h1> */}
-            {/* <LoginComponent/> */}
+            </h1>
+            <LoginComponent/> */}
           </header>
       </div>
     );
