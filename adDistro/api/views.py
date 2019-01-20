@@ -1,10 +1,10 @@
 from rest_framework import viewsets
-from . import models
 from . import serializers
 from rest_framework.response import Response 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from . import serializers
+from adIndex.models import Ad, EbayUser, AdDistroUser
 
 class UserViewset(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
@@ -21,7 +21,7 @@ class UserViewset(viewsets.ReadOnlyModelViewSet):
     #     isValid = authenticate(username, password)
 
 class EbayUserViewset(viewsets.ReadOnlyModelViewSet):
-    queryset = models.EbayUser.objects.all()
+    queryset = EbayUser.objects.all()
     serializer_class = serializers.EbayUserSerializer
 
     # allowed_methods = ['POST', 'GET']
@@ -32,3 +32,7 @@ class EbayUserViewset(viewsets.ReadOnlyModelViewSet):
     
     def post(self, request):
         pass
+
+class AdViewSet(viewsets.ModelViewSet):
+    queryset = Ad.objects.all()
+    serializer_class = serializers.AdSerializer

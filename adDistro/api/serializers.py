@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from . import models
+from adIndex.models import EbayUser, Ad
 from django.contrib.auth.models import User
+from adIndex.models import Ad
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
@@ -10,5 +11,10 @@ class CurrentUserSerializer(serializers.ModelSerializer):
 
 class EbayUserSerializer(serializers.Serializer):
     class Meta:
-        model = models.EbayUser
+        model = EbayUser
         fields = ('AdDistroId', 'EbayUsername', 'EbayPassword')
+
+class AdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ad
+        fields = ('title', 'description', 'price', 'packageWeight', 'packageHeight', 'packageWidth', 'packageUnitMeasurement', 'packageLength', 'is_active', 'postTo')

@@ -5,8 +5,9 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('user', views.UserViewset, 'list')
+router.register('ad', views.AdViewSet)
 
 urlpatterns = [
     # path('ebayuser/', include(router.urls)),
     path('', include(router.urls))
-]
+    ]
