@@ -1,6 +1,8 @@
-.App {
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -8,7 +10,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ADD8E6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* .App-header {
+  background-color: #ADD8E6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +29,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -29,4 +42,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-NavigationBar {
+  text-align: left
 }
