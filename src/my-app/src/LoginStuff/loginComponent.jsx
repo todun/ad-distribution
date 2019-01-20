@@ -1,7 +1,7 @@
 import React, { Component } 
 from 'react';
 import {FormControl, FormGroup, Form, Button, ControlLabel} from "react-bootstrap";
-import RestUtil from "./util/RestUtil";
+import RestUtil from "../util/RestUtil";
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -11,6 +11,11 @@ class LoginComponent extends Component {
             passwordField: "",
             isLoggedIn: false
         }
+    }
+
+    sendLoginRequest = () => {
+        const endPoint = "user/2"
+        RestUtil.sendGetRequest(endPoint);
     }
 
     getValidationState = () => {
@@ -67,8 +72,10 @@ class LoginComponent extends Component {
                     <FormControl.Feedback />
                     </FormGroup>
                 </Form>
-                <Button bsStyle="primary"
-                type="submit">
+                <Button 
+                    onClick={this.sendLoginRequest}
+                    bsStyle="primary"
+                    type="submit">
                     Log me in daddy
                 </Button>
             </div>

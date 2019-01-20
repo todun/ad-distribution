@@ -5,9 +5,9 @@ import rp from "request-promise";
  * @param {String} endpoint - the endpoint to send the request to on the server (everything after the /api/ part of the URI)
  * @return the URL to send an HTTP request to
  */
-// const makeRequestURL = (endpoint) => {
-// 	return `${DATABASE_BASE_URL}/api/${endpoint}/`;
-// };
+const makeRequestURL = (endpoint) => {
+	return `http://127.0.0.1:8000/api/${endpoint}/`;
+};
 
 export default class RestUtil {
 
@@ -27,7 +27,7 @@ export default class RestUtil {
 			json: true,
 			method: "POST",
 			body: body
-		}, optionOverrides);
+		}, optionOverrides);	
 		return rp.post(options);
 	}
 
